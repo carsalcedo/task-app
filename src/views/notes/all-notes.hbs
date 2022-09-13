@@ -1,0 +1,34 @@
+<div class="row mt-4">
+    {{#each notes}}
+
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="car-title d-flex justify-content-between align-items-center">
+                        {{title}} 
+                        <a href="/notes/edit/{{_id}}"> 
+                            <div class="fas fa-edit"></div> 
+                        </a>
+                    </h4>
+                    <p>{{description}}</p>
+                    <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger w-100 btn-sm" type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Hello {{user.name}}</h4>
+                    <p class="lead">No task yet. Insert a new task</p>
+                    <a href="/notes/add" class="btn btn-success w-100">Create Task</a> 
+                </div>
+            </div>
+        </div> 
+    {{/each}}
+</div>
